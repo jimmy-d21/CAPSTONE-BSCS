@@ -1,0 +1,90 @@
+export const mockRequests = [
+  {
+    id: "REQ-001",
+    branch: "SM Bacolod",
+    status: "pending",
+    priority: "high",
+    requestedAt: "Apr 25, 2026, 08:32 AM",
+    items: [
+      { item: "Pork Spare Ribs (Raw)", quantity: 30, unit: "kg" },
+      { item: "BBQ Sauce", quantity: 12, unit: "bottles" },
+      { item: "Charcoal", quantity: 5, unit: "bags" },
+    ],
+    notes:
+      "Running low on ribs. Weekend rush expected — need urgent restock before Friday.",
+    adminNotes: null,
+    respondedAt: null,
+  },
+  {
+    id: "REQ-002",
+    branch: "Abreeza Davao",
+    status: "approved",
+    priority: "medium",
+    requestedAt: "Apr 24, 2026, 03:15 PM",
+    items: [
+      { item: "Chicken (Whole)", quantity: 50, unit: "pcs" },
+      { item: "Achuete Powder", quantity: 3, unit: "kg" },
+    ],
+    notes:
+      "Need fresh chicken for inasal. Current stock will run out by tomorrow morning.",
+    adminNotes: "Approved. Delivery scheduled for April 25 at 7 AM.",
+    respondedAt: "Apr 24, 2026, 04:00 PM",
+  },
+  {
+    id: "REQ-003",
+    branch: "Gateway Cubao",
+    status: "pending",
+    priority: "medium",
+    requestedAt: "Apr 25, 2026, 09:10 AM",
+    items: [
+      { item: "Java Rice Mix", quantity: 10, unit: "kg" },
+      { item: "Garlic (Peeled)", quantity: 5, unit: "kg" },
+      { item: "Cooking Oil", quantity: 20, unit: "liters" },
+    ],
+    notes: "Weekly restocking for kitchen staples.",
+    adminNotes: null,
+    respondedAt: null,
+  },
+  {
+    id: "REQ-004",
+    branch: "Robinsons Iloilo",
+    status: "declined",
+    priority: "low",
+    requestedAt: "Apr 23, 2026, 11:00 AM",
+    items: [{ item: "Bangus (Large)", quantity: 25, unit: "pcs" }],
+    notes: "Need bangus for the seafood platter.",
+    adminNotes:
+      "Supplier out of large bangus this week. Will process request next Monday.",
+    respondedAt: "Apr 23, 2026, 02:30 PM",
+  },
+  {
+    id: "REQ-005",
+    branch: "SM CDO",
+    status: "pending",
+    priority: "high",
+    requestedAt: "Apr 25, 2026, 07:45 AM",
+    items: [
+      { item: "Paper Bags (Large)", quantity: 500, unit: "pcs" },
+      { item: "Tissue Paper", quantity: 100, unit: "rolls" },
+      { item: "Disposable Gloves", quantity: 200, unit: "pairs" },
+    ],
+    notes:
+      "Critical shortage of packaging materials. We will run out by noon today.",
+    adminNotes: null,
+    respondedAt: null,
+  },
+  {
+    id: "REQ-006",
+    branch: "Ayala Cebu",
+    status: "approved",
+    priority: "low",
+    requestedAt: "Apr 22, 2026, 02:00 PM",
+    items: [
+      { item: "Calamansi", quantity: 10, unit: "kg" },
+      { item: "Soy Sauce", quantity: 15, unit: "liters" },
+    ],
+    notes: "Monthly condiment restock.",
+    adminNotes: "Approved. Included in the Cebu delivery batch.",
+    respondedAt: "Apr 22, 2026, 04:15 PM",
+  },
+];
