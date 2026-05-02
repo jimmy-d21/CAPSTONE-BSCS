@@ -50,30 +50,33 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
-    // Simulate API call
-    // In a real app, this would validate credentials against the backend
+    // Aligned with admin/branchData.js — username = branchCode, password = "ribshack2024"
+    const branchCredentials = [
+      { username: "sm_bacolod",     branchCode: "sm_bacolod",     fullName: "Jose Reyes",        email: "jose.reyes@ribshack.ph" },
+      { username: "ayala_cebu",     branchCode: "ayala_cebu",     fullName: "Maria Cruz",        email: "maria.cruz@ribshack.ph" },
+      { username: "rob_iloilo",     branchCode: "rob_iloilo",     fullName: "Carlos Santos",     email: "carlos.santos@ribshack.ph" },
+      { username: "sm_cdo",         branchCode: "sm_cdo",         fullName: "Ana Dela Cruz",     email: "ana.delacruz@ribshack.ph" },
+      { username: "abreeza_davao",  branchCode: "abreeza_davao",  fullName: "Roberto Lim",       email: "roberto.lim@ribshack.ph" },
+      { username: "gaisano_zambo",  branchCode: "gaisano_zambo",  fullName: "Elena Villanueva",  email: "elena.villanueva@ribshack.ph" },
+      { username: "sm_manila",      branchCode: "sm_manila",      fullName: "Miguel Torres",     email: "miguel.torres@ribshack.ph" },
+      { username: "gateway_cubao",  branchCode: "gateway_cubao",  fullName: "Sandra Aquino",     email: "sandra.aquino@ribshack.ph" },
+    ];
 
-    // Demo credentials for SM Bacolod branch
-    const validCredentials = {
-      username: "sm_bacolod_user",
-      password: "ribshack123",
-    };
+    const match = branchCredentials.find(
+      (c) => c.username === username && password === "ribshack2024"
+    );
 
-    if (
-      username === validCredentials.username &&
-      password === validCredentials.password
-    ) {
+    if (match) {
       const userData = {
-        id: 1,
-        username: username,
-        fullName: "Juan Manager",
+        id: match.branchCode,
+        username: match.username,
+        fullName: match.fullName,
         role: "manager",
-        email: "juan.manager@ribshack.ph",
+        email: match.email,
       };
 
-      // Find store data from stores list
       const storeData = storesData.stores.find(
-        (s) => s.branchCode === "sm_bacolod",
+        (s) => s.branchCode === match.branchCode
       );
 
       const branchData = {

@@ -1,7 +1,22 @@
 import { useNavigate } from "react-router";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "../ui/card";
 import { Button } from "../ui/button";
-import { Store, MapPin, User, Phone, Key, Edit, Trash2, BarChart3 } from "lucide-react";
+import {
+  Store,
+  MapPin,
+  User,
+  Phone,
+  Key,
+  Edit,
+  Trash2,
+  BarChart3,
+} from "lucide-react";
 import BranchStatusBadge from "./BranchStatusBadge";
 
 export default function BranchCard({ branch, onEdit, onDelete }) {
@@ -41,14 +56,18 @@ export default function BranchCard({ branch, onEdit, onDelete }) {
           </div>
           <div className="flex items-center gap-2">
             <Key className="size-4 text-gray-400" />
-            <span className="text-gray-600 font-mono text-xs">{branch.username}</span>
+            <span className="text-gray-600 font-mono text-xs">
+              {branch.username}
+            </span>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4 pt-4 border-t">
           <div>
             <div className="text-xs text-gray-500">Today's Revenue</div>
-            <div className="text-lg font-bold text-green-600">₱{branch.dailyRevenue.toLocaleString()}</div>
+            <div className="text-lg font-bold text-green-600">
+              ₱{branch.dailyRevenue.toLocaleString()}
+            </div>
           </div>
           <div>
             <div className="text-xs text-gray-500">Orders Today</div>
@@ -66,11 +85,23 @@ export default function BranchCard({ branch, onEdit, onDelete }) {
             View Store Dashboard
           </Button>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="flex-1" onClick={() => onEdit(branch)}>
-              <Edit className="size-4 mr-2" />Edit
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex-1"
+              onClick={() => onEdit(branch)}
+            >
+              <Edit className="size-4 mr-2" />
+              Edit
             </Button>
-            <Button variant="outline" size="sm" className="flex-1 text-red-600 hover:bg-red-50 hover:text-red-700" onClick={() => onDelete(branch)}>
-              <Trash2 className="size-4 mr-2" />Delete
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex-1 text-red-600 hover:bg-red-50 hover:text-red-700"
+              onClick={() => onDelete(branch)}
+            >
+              <Trash2 className="size-4 mr-2" />
+              Delete
             </Button>
           </div>
         </div>

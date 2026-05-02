@@ -1,3 +1,24 @@
+// ─── Available add-ons (drinks + extras) ─────────────────────────────────────
+export const AVAILABLE_ADDONS = {
+  drinks: [
+    { id: "d1", name: "Mango Shake",          emoji: "🥭", price: 75 },
+    { id: "d2", name: "Calamansi Juice",       emoji: "🍋", price: 55 },
+    { id: "d3", name: "Iced Tea",              emoji: "🧋", price: 45 },
+    { id: "d4", name: "Sago at Gulaman",       emoji: "🥤", price: 40 },
+    { id: "d5", name: "Buko Juice",            emoji: "🥥", price: 65 },
+    { id: "d6", name: "Softdrinks (Regular)",  emoji: "🥃", price: 35 },
+  ],
+  extras: [
+    { id: "e1", name: "Extra Rice",       emoji: "🍚", price: 35 },
+    { id: "e2", name: "Sawsawan Set",     emoji: "🧂", price: 25 },
+    { id: "e3", name: "Garlic Butter",    emoji: "🧄", price: 30 },
+    { id: "e4", name: "Extra BBQ Sauce",  emoji: "🫙", price: 25 },
+    { id: "e5", name: "Atchara",          emoji: "🥕", price: 20 },
+    { id: "e6", name: "Ensalada",         emoji: "🥗", price: 45 },
+    { id: "e7", name: "Steamed Veggies",  emoji: "🥦", price: 55 },
+  ],
+};
+
 export const ordersData = {
   orders: [
     {
@@ -6,25 +27,37 @@ export const ordersData = {
       customerName: "Juan Dela Cruz",
       customerPhone: "+63 917 123 4567",
       orderType: "delivery",
+      deliveryAddress: "42 Mango Ave, Cebu City",
       status: "pending",
       items: [
         {
+          id: "i1",
           productName: "Pork Spareribs",
           quantity: 2,
+          unitPrice: 300,
           customization: "Extra spicy",
-          includesUnliRice: true
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.drinks[0] },
+            { ...AVAILABLE_ADDONS.extras[0] },
+          ],
         },
         {
+          id: "i2",
           productName: "Chicken Inasal (Pecho)",
           quantity: 1,
-          customization: "Pecho",
-          includesUnliRice: true
-        }
+          unitPrice: 190,
+          customization: null,
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.extras[1] },
+          ],
+        },
       ],
       totalAmount: 890.00,
       specialInstructions: "No sauce on the side",
       orderReceivedAt: "2026-03-28T10:50:00",
-      estimatedTime: 25
+      estimatedTime: 25,
     },
     {
       id: 2,
@@ -32,25 +65,34 @@ export const ordersData = {
       customerName: "Maria Santos",
       customerPhone: "+63 918 234 5678",
       orderType: "dine-in",
+      deliveryAddress: null,
       status: "on_grill",
       items: [
         {
+          id: "i3",
           productName: "BBQ Skewers (Pork)",
           quantity: 5,
+          unitPrice: 65,
           customization: null,
-          includesUnliRice: true
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.drinks[2] },
+          ],
         },
         {
+          id: "i4",
           productName: "Iced Tea",
           quantity: 2,
+          unitPrice: 45,
           customization: "Less sugar",
-          includesUnliRice: false
-        }
+          includesUnliRice: false,
+          addons: [],
+        },
       ],
       totalAmount: 425.00,
       specialInstructions: null,
       orderReceivedAt: "2026-03-28T10:35:00",
-      estimatedTime: 15
+      estimatedTime: 15,
     },
     {
       id: 3,
@@ -58,25 +100,35 @@ export const ordersData = {
       customerName: "Pedro Reyes",
       customerPhone: "+63 919 345 6789",
       orderType: "delivery",
+      deliveryAddress: "18 Colon St, Cebu City",
       status: "ready",
       items: [
         {
+          id: "i5",
           productName: "Korean BBQ Samgyupsal",
           quantity: 3,
+          unitPrice: 420,
           customization: null,
-          includesUnliRice: true
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.drinks[4] },
+            { ...AVAILABLE_ADDONS.extras[2] },
+          ],
         },
         {
+          id: "i6",
           productName: "Beef Bulgogi",
           quantity: 1,
+          unitPrice: 380,
           customization: null,
-          includesUnliRice: true
-        }
+          includesUnliRice: true,
+          addons: [],
+        },
       ],
       totalAmount: 1580.00,
       specialInstructions: "Extra lettuce wraps please",
       orderReceivedAt: "2026-03-28T10:20:00",
-      estimatedTime: 5
+      estimatedTime: 5,
     },
     {
       id: 4,
@@ -84,19 +136,23 @@ export const ordersData = {
       customerName: "Ana Gonzales",
       customerPhone: "+63 920 456 7890",
       orderType: "dine-in",
+      deliveryAddress: null,
       status: "pending",
       items: [
         {
+          id: "i7",
           productName: "Chicken Inasal (Paa)",
           quantity: 2,
-          customization: "Paa",
-          includesUnliRice: true
-        }
+          unitPrice: 170,
+          customization: null,
+          includesUnliRice: true,
+          addons: [],
+        },
       ],
       totalAmount: 340.00,
       specialInstructions: "Well done",
       orderReceivedAt: "2026-03-28T10:52:00",
-      estimatedTime: 20
+      estimatedTime: 20,
     },
     {
       id: 5,
@@ -104,31 +160,36 @@ export const ordersData = {
       customerName: "Carlos Tan",
       customerPhone: "+63 921 567 8901",
       orderType: "delivery",
+      deliveryAddress: "Tres de Abril, Cebu City",
       status: "dispatched",
       items: [
         {
+          id: "i8",
           productName: "Grilled Blue Marlin",
           quantity: 1,
+          unitPrice: 350,
           customization: null,
-          includesUnliRice: true
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.drinks[3] },
+          ],
         },
         {
+          id: "i9",
           productName: "Squid BBQ",
           quantity: 2,
+          unitPrice: 280,
           customization: null,
-          includesUnliRice: true
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.extras[5] },
+          ],
         },
-        {
-          productName: "Coke",
-          quantity: 3,
-          customization: null,
-          includesUnliRice: false
-        }
       ],
       totalAmount: 1150.00,
       specialInstructions: null,
       orderReceivedAt: "2026-03-28T10:05:00",
-      estimatedTime: 0
+      estimatedTime: 0,
     },
     {
       id: 6,
@@ -136,19 +197,26 @@ export const ordersData = {
       customerName: "Linda Ramos",
       customerPhone: "+63 922 678 9012",
       orderType: "dine-in",
+      deliveryAddress: null,
       status: "on_grill",
       items: [
         {
+          id: "i10",
           productName: "Pork Belly BBQ",
           quantity: 2,
+          unitPrice: 240,
           customization: null,
-          includesUnliRice: true
-        }
+          includesUnliRice: true,
+          addons: [
+            { ...AVAILABLE_ADDONS.drinks[1] },
+            { ...AVAILABLE_ADDONS.extras[0] },
+          ],
+        },
       ],
       totalAmount: 480.00,
       specialInstructions: null,
       orderReceivedAt: "2026-03-28T10:40:00",
-      estimatedTime: 12
-    }
-  ]
+      estimatedTime: 12,
+    },
+  ],
 };

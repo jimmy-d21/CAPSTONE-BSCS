@@ -35,8 +35,8 @@ const LoginPage = () => {
   };
 
   const fillDemoCredentials = () => {
-    setUsername("sm_bacolod_user");
-    setPassword("ribshack123");
+    setUsername("sm_bacolod");
+    setPassword("ribshack2024");
   };
 
   return (
@@ -102,7 +102,7 @@ const LoginPage = () => {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="e.g. sm_bacolod_user"
+                    placeholder="e.g. sm_bacolod"
                     className="w-full pl-14 pr-5 py-4 bg-gray-100 border border-gray-100 rounded-2xl focus:ring-4 focus:ring-[#D35400]/10 focus:border-[#D35400] focus:bg-white hover:shadow-inner transition-all outline-none text-gray-800"
                     required
                   />
