@@ -26,7 +26,7 @@ export function HomePage() {
     .filter((i) => i.bestseller && i.available)
     .slice(0, 8);
   const openBranches = branchesData
-    .filter((b) => b.status === "open")
+    .filter((b) => b.status === "open" && b.city === "Bacolod")
     .slice(0, 3);
   const firstName = user?.name?.split(" ")[0] || "there";
 

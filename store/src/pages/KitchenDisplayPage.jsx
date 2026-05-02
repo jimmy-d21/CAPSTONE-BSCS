@@ -210,11 +210,6 @@ const KitchenDisplayPage = () => {
                       </button>
                     )}
                   </div>
-
-                  {/* View detail hint */}
-                  <p className="text-[11px] text-gray-400 text-center">
-                    Tap card to view full details &amp; add drinks / extras
-                  </p>
                 </CardContent>
               </Card>
             );

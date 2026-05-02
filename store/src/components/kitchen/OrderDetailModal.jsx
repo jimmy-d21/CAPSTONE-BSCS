@@ -190,11 +190,10 @@ function ProgressBar({ status }) {
 // ─── Main Modal ───────────────────────────────────────────────────────────────
 export default function OrderDetailModal({ order, onClose }) {
   const { updateOrderStatus, removeAddonFromItem } = useOrders();
-  const [addonTarget, setAddonTarget] = useState(null); // { itemId, itemName }
+  const [addonTarget, setAddonTarget] = useState(null);
 
   if (!order) return null;
 
-  // Live total computed from items + addons
   const subtotal = order.items.reduce((sum, item) => {
     const addonTotal = item.addons.reduce((s, a) => s + a.price, 0);
     return sum + (item.unitPrice + addonTotal) * item.quantity;
@@ -213,140 +212,136 @@ export default function OrderDetailModal({ order, onClose }) {
   return (
     <>
       {/* Backdrop */}
-      <div
-        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 z-50 bg-black/40" onClick={onClose} />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pointer-events-none">
+      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 pointer-events-none">
         <div
-          className="pointer-events-auto bg-white rounded-t-3xl sm:rounded-2xl w-full sm:max-w-xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
+          className="pointer-events-auto bg-white rounded-t-3xl sm:rounded-2xl w-full sm:max-w-lg max-h-[92vh] flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Drag handle (mobile) */}
-          <div className="flex justify-center pt-3 sm:hidden shrink-0">
-            <div className="w-10 h-1 bg-gray-200 rounded-full" />
+          {/* Drag handle (mobile only) */}
+          <div className="flex justify-center pt-3 pb-1 sm:hidden shrink-0">
+            <div className="w-9 h-1 bg-gray-200 rounded-full" />
           </div>
 
           {/* ── Header ── */}
-          <div className="flex items-start justify-between px-5 pt-4 pb-2 shrink-0">
+          <div className="flex items-center justify-between px-5 pt-4 pb-3 shrink-0 border-b border-gray-100">
             <div>
-              <p className="text-[11px] text-gray-400 uppercase tracking-widest font-semibold">
-                Order
+              <p className="text-xs text-gray-400 mb-0.5">
+                Order #{order.orderNumber}
               </p>
-              <h2 className="text-3xl font-black text-gray-900 leading-none">
-                #{order.orderNumber}
+              <h2 className="text-base font-semibold text-gray-900 leading-tight">
+                {order.customerName}
               </h2>
             </div>
             <button
               onClick={onClose}
-              className="mt-1 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
+              className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
-          {/* ── Status Hero Banner ── */}
-          <div className="mx-4 mb-3 rounded-2xl bg-gradient-to-b from-gray-900 to-gray-800 p-5 shrink-0">
-            <div className="flex flex-col items-center gap-1 mb-5">
-              <span className="text-3xl">
+          {/* ── Status + Progress ── */}
+          <div className="px-5 py-4 shrink-0 border-b border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-2xl">
                 {STEPS.find((s) => s.key === order.status)?.icon ?? "📋"}
               </span>
-              <p className="text-base font-bold text-white">
-                {formatOrderStatus(order.status)}
-              </p>
-              <p className="text-xs text-gray-400">
-                {formatTime(order.orderReceivedAt)}
-              </p>
+              <div>
+                <p className="text-sm font-semibold text-gray-900">
+                  {formatOrderStatus(order.status)}
+                </p>
+                <p className="text-xs text-gray-400">
+                  {formatTime(order.orderReceivedAt)}
+                </p>
+              </div>
+              <div className="ml-auto">
+                <span
+                  className={`text-xs font-medium border px-2.5 py-1 rounded-full capitalize ${typeBadgeCls}`}
+                >
+                  {order.orderType}
+                </span>
+              </div>
             </div>
             <ProgressBar status={order.status} />
           </div>
 
           {/* ── Scrollable body ── */}
-          <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-3">
-            {/* Customer */}
-            <div className="bg-gray-50 rounded-2xl p-4">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">
-                👤 Customer
+          <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+            {/* Customer info */}
+            <div>
+              <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                Customer
               </p>
-              <p className="text-sm font-semibold text-gray-900">
-                {order.customerName}
-              </p>
-              {order.customerPhone && (
-                <p className="text-xs text-gray-500 mt-0.5">
-                  📞 {order.customerPhone}
-                </p>
-              )}
-              <span
-                className={`inline-block mt-2 text-[10px] font-bold border px-2 py-0.5 rounded-full capitalize ${typeBadgeCls}`}
-              >
-                {order.orderType}
-              </span>
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-gray-800">{order.customerName}</p>
+                {order.customerPhone && (
+                  <p className="text-xs text-gray-400">{order.customerPhone}</p>
+                )}
+              </div>
             </div>
 
             {/* Delivery address */}
             {order.orderType === "delivery" && order.deliveryAddress && (
-              <div className="bg-gray-50 rounded-2xl p-4">
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">
-                  📍 Delivery Address
+              <div>
+                <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                  Delivery address
                 </p>
                 <p className="text-sm text-gray-800">{order.deliveryAddress}</p>
               </div>
             )}
 
-            {/* ── Order Items ── */}
-            <div className="bg-gray-50 rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 pt-4 pb-3 border-b border-gray-200">
-                <span className="text-sm">🍽️</span>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                  Order Items
-                </p>
-              </div>
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
 
-              <div className="divide-y divide-gray-100">
+            {/* Order items */}
+            <div>
+              <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                Items
+              </p>
+              <div className="space-y-3">
                 {order.items.map((item) => (
-                  <div key={item.id} className="px-4 py-3">
+                  <div key={item.id}>
                     {/* Item row */}
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-start justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-black text-orange-600 bg-orange-100 rounded-lg w-7 h-7 flex items-center justify-center">
+                        <span className="text-xs font-semibold text-orange-500 bg-orange-50 rounded-md px-1.5 py-0.5 tabular-nums">
                           {item.quantity}×
                         </span>
                         <div>
-                          <p className="text-sm font-bold text-gray-900">
+                          <p className="text-sm text-gray-900">
                             {item.productName}
                           </p>
                           {item.customization && (
-                            <p className="text-[10px] text-gray-500 italic">
+                            <p className="text-[11px] text-gray-400 italic mt-0.5">
                               {item.customization}
                             </p>
                           )}
                         </div>
                       </div>
                       {item.unitPrice && (
-                        <span className="text-sm font-semibold text-gray-700">
+                        <p className="text-sm text-gray-600 tabular-nums">
                           {formatCurrency(item.unitPrice * item.quantity)}
-                        </span>
+                        </p>
                       )}
                     </div>
 
-                    {/* Addons */}
+                    {/* Add-ons */}
                     {item.addons.length > 0 && (
-                      <div className="ml-9 space-y-1 mb-2">
+                      <div className="ml-9 mt-1.5 space-y-1">
                         {item.addons.map((addon) => (
                           <div
                             key={addon.id}
-                            className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-3 py-1.5"
+                            className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-1.5"
                           >
-                            <span className="text-xs text-gray-700">
+                            <span className="text-xs text-gray-600">
                               {addon.emoji} {addon.name}
                             </span>
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs text-gray-500">
-                                +{formatCurrency(addon.price)}
-                              </span>
-                            </div>
+                            <span className="text-xs text-gray-400 tabular-nums">
+                              +{formatCurrency(addon.price)}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -358,41 +353,49 @@ export default function OrderDetailModal({ order, onClose }) {
 
             {/* Special instructions */}
             {order.specialInstructions && (
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
-                <p className="text-[10px] font-bold text-amber-700 uppercase tracking-wider mb-1">
-                  ⚠️ Special Instructions
-                </p>
-                <p className="text-sm text-amber-900">
-                  {order.specialInstructions}
-                </p>
+              <div className="flex gap-2.5 bg-amber-50 border border-amber-100 rounded-xl p-3">
+                <span className="text-sm mt-0.5 shrink-0">⚠️</span>
+                <div>
+                  <p className="text-[10px] font-semibold text-amber-600 uppercase tracking-wider mb-0.5">
+                    Note
+                  </p>
+                  <p className="text-xs text-amber-900 leading-relaxed">
+                    {order.specialInstructions}
+                  </p>
+                </div>
               </div>
             )}
 
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
+
             {/* Totals */}
-            <div className="bg-gray-50 rounded-2xl p-4 space-y-2">
-              <div className="flex justify-between text-sm text-gray-600">
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm text-gray-500">
                 <span>Subtotal</span>
-                <span>{formatCurrency(subtotal)}</span>
+                <span className="tabular-nums">{formatCurrency(subtotal)}</span>
               </div>
               {deliveryFee > 0 && (
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>Delivery Fee</span>
-                  <span>{formatCurrency(deliveryFee)}</span>
+                <div className="flex justify-between text-sm text-gray-500">
+                  <span>Delivery fee</span>
+                  <span className="tabular-nums">
+                    {formatCurrency(deliveryFee)}
+                  </span>
                 </div>
               )}
-              <div className="flex justify-between text-base font-bold text-gray-900 border-t border-gray-200 pt-2 mt-1">
+              <div className="flex justify-between text-sm font-semibold text-gray-900 pt-2 border-t border-gray-100">
                 <span>Total</span>
-                <span className="text-red-600">{formatCurrency(total)}</span>
+                <span className="tabular-nums">{formatCurrency(total)}</span>
               </div>
             </div>
           </div>
 
           {/* ── Footer Action ── */}
           {canAdvance && (
-            <div className="p-4 border-t border-gray-100 shrink-0">
+            <div className="px-5 py-4 border-t border-gray-100 shrink-0">
               <button
                 onClick={handleAdvance}
-                className={`w-full py-3.5 rounded-2xl text-sm font-bold text-white transition-all shadow-md ${ACTION_COLOR[order.status]}`}
+                className={`w-full py-3 rounded-xl text-sm font-semibold text-white transition-all active:scale-[0.98] ${ACTION_COLOR[order.status]}`}
               >
                 {ACTION_LABEL[order.status]}
               </button>
@@ -401,7 +404,6 @@ export default function OrderDetailModal({ order, onClose }) {
         </div>
       </div>
 
-      {/* Addon picker sub-modal */}
       {addonTarget && (
         <AddonPickerModal
           orderId={order.id}

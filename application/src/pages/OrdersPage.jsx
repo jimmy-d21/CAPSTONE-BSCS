@@ -199,15 +199,6 @@ function OrderDetailModal({ order, onClose }) {
             <p style={{ color: "#fff", fontSize: "16px", fontWeight: 800 }}>
               {STATUS_LABEL[order.status]}
             </p>
-            <p
-              style={{
-                color: "var(--brand-300)",
-                fontSize: "12px",
-                marginTop: "4px",
-              }}
-            >
-              {formatDate(order.orderDate)}
-            </p>
           </div>
 
           {/* Progress */}
@@ -581,11 +572,6 @@ function OrderDetailModal({ order, onClose }) {
                 icon: <CreditCard size={15} color="var(--accent)" />,
                 label: "Payment Method",
                 value: order.paymentMethod,
-              },
-              {
-                icon: <Clock size={15} color="var(--accent)" />,
-                label: "Ordered On",
-                value: formatDate(order.orderDate),
               },
             ].map((row, i, arr) => (
               <div
