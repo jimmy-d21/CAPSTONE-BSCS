@@ -161,15 +161,6 @@ export const mockAnalyticsData = {
       popularIn: ["Mindanao"],
     },
     {
-      id: 11,
-      name: "Halo-Halo",
-      category: "Desserts",
-      sold: 1456,
-      revenue: 160160,
-      growth: "+31.2%",
-      popularIn: ["All Regions"],
-    },
-    {
       id: 7,
       name: "Grilled Bangus",
       category: "Seafood",

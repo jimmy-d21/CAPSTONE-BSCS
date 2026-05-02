@@ -5,196 +5,196 @@ export const menuData = {
       productCode: "PORK-001",
       productName: "Pork Spareribs",
       category: "Pork",
-      basePrice: 300.00,
+      basePrice: 300.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1544025162-d76694265947",
+      imageUrl: "/pork-spareribs.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 2,
       productCode: "PORK-002",
-      productName: "Pork Belly BBQ",
+      productName: "Pork Backribs", // Updated name to match image
       category: "Pork",
-      basePrice: 240.00,
+      basePrice: 399.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1602526212253-54e7e57ce537",
+      imageUrl: "/pork-backribs.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 3,
       productCode: "PORK-003",
       productName: "BBQ Skewers (Pork)",
       category: "Pork",
-      basePrice: 65.00,
+      basePrice: 65.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1633237308525-cd587cf71f49",
+      imageUrl: "/pork-bbq.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 4,
       productCode: "CHIC-001",
       productName: "Chicken Inasal (Paa)",
       category: "Chicken",
-      basePrice: 170.00,
+      basePrice: 170.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6",
+      imageUrl: "/chicken-inasal-paa.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 5,
       productCode: "CHIC-002",
       productName: "Chicken Inasal (Pecho)",
       category: "Chicken",
-      basePrice: 190.00,
+      basePrice: 190.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6",
+      imageUrl: "/chicken-inasal-pecho.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 6,
       productCode: "BEEF-001",
-      productName: "Beef Bulgogi",
+      productName: "Beef Kebab", // Updated to match image asset
       category: "Beef",
-      basePrice: 380.00,
+      basePrice: 289.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f",
+      imageUrl: "/beef-kebab.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 7,
-      productCode: "BEEF-002",
-      productName: "Grilled Beef Ribs",
-      category: "Beef",
-      basePrice: 450.00,
+      productCode: "KBBQ-001",
+      productName: "Korean Pork BBQ", // Updated to match image asset
+      category: "Korean BBQ",
+      basePrice: 269.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba",
+      imageUrl: "/korean-chicken-pork.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 8,
-      productCode: "KBBQ-001",
-      productName: "Korean BBQ Samgyupsal",
+      productCode: "KBBQ-002",
+      productName: "Korean Chicken BBQ", // Updated to match image asset
       category: "Korean BBQ",
-      basePrice: 420.00,
+      basePrice: 259.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1593030668930-65e2ed5fcbf6",
+      imageUrl: "/korean-chicken-bqq.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 9,
-      productCode: "KBBQ-002",
-      productName: "Korean BBQ Combo",
-      category: "Korean BBQ",
-      basePrice: 650.00,
-      includesUnliRice: true,
-      isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1627662168781-d376389f8a22",
-      availability: {
-        isAvailable: true,
-        unavailableReason: null
-      }
-    },
-    {
-      id: 10,
       productCode: "SEAF-001",
       productName: "Grilled Blue Marlin",
       category: "Seafood",
-      basePrice: 350.00,
+      basePrice: 350.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2",
+      imageUrl: "/blue-marlin.png",
       availability: {
         isAvailable: false,
-        unavailableReason: "Out of stock - waiting for supplier"
-      }
+        unavailableReason: "Out of stock - waiting for supplier",
+      },
+    },
+    {
+      id: 10,
+      productCode: "SEAF-002",
+      productName: "Boneless Bangus", // Updated to match image asset
+      category: "Seafood",
+      basePrice: 279.0,
+      includesUnliRice: true,
+      isActive: true,
+      imageUrl: "/bonelss-bangus.png",
+      availability: {
+        isAvailable: true,
+        unavailableReason: null,
+      },
     },
     {
       id: 11,
-      productCode: "SEAF-002",
-      productName: "Squid BBQ",
+      productCode: "SEAF-003",
+      productName: "Golden Pomfret",
       category: "Seafood",
-      basePrice: 280.00,
+      basePrice: 319.0,
       includesUnliRice: true,
       isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7",
+      imageUrl: "/golden-pompano.png",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
       id: 12,
+      productCode: "SIDE-001",
+      productName: "Hungarian Sausage",
+      category: "Sides",
+      basePrice: 189.0,
+      includesUnliRice: true,
+      isActive: true,
+      imageUrl: "/hungarian-sausage.png",
+      availability: {
+        isAvailable: true,
+        unavailableReason: null,
+      },
+    },
+    {
+      id: 13,
       productCode: "DRINK-001",
       productName: "Coke",
       category: "Drinks",
-      basePrice: 45.00,
+      basePrice: 45.0,
       includesUnliRice: false,
       isActive: true,
       imageUrl: "https://images.unsplash.com/photo-1554866585-cd94860890b7",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
     {
-      id: 13,
+      id: 14,
       productCode: "DRINK-002",
       productName: "Iced Tea",
       category: "Drinks",
-      basePrice: 40.00,
+      basePrice: 40.0,
       includesUnliRice: false,
       isActive: true,
       imageUrl: "https://images.unsplash.com/photo-1556679343-c7306c1976bc",
       availability: {
         isAvailable: true,
-        unavailableReason: null
-      }
+        unavailableReason: null,
+      },
     },
-    {
-      id: 14,
-      productCode: "DRINK-003",
-      productName: "Bottled Water",
-      category: "Drinks",
-      basePrice: 25.00,
-      includesUnliRice: false,
-      isActive: true,
-      imageUrl: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d",
-      availability: {
-        isAvailable: true,
-        unavailableReason: null
-      }
-    }
-  ]
+  ],
 };

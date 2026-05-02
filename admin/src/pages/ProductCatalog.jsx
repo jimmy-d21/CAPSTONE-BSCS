@@ -29,7 +29,8 @@ const EMPTY_FORM = {
 };
 
 export default function ProductCatalog() {
-  const { products, categories, addProduct, updateProduct, deleteProduct } = useProductContext();
+  const { products, categories, addProduct, updateProduct, deleteProduct } =
+    useProductContext();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
